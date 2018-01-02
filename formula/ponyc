@@ -5,3 +5,11 @@ build() {
   make
   make prefix="${PREFIX}" install
 }
+
+clean() {
+  rm -f "${PREFIX}/bin/ponyc"
+  rm -f "${PREFIX}/include/pony.h"
+  rm -rf "${PREFIX}/include/pony"
+  rm -f "${PREFIX}/lib/libpony*.a"
+  rm -rf "${PREFIX}/lib/pony"
+}

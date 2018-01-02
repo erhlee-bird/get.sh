@@ -4,3 +4,7 @@ SRC=https://github.com/erhlee-bird/get.sh
 build() {
   ln -fs "${TARGET}/get.sh" "${PREFIX}/bin"
 }
+
+clean() {
+  rm -f "${PREFIX}/bin/get.sh"
+}

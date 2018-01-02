@@ -17,7 +17,7 @@ build() {
 }
 
 clean() {
-  rm "${PREFIX}/bin/nim"
-  rm "${PREFIX}/bin/nimble"
-  rm "${PREFIX}/bin/nimsuggest"
+  rm -f "${PREFIX}/bin/nim"
+  rm -f "${PREFIX}/bin/nimble"
+  rm -f "${PREFIX}/bin/nimsuggest"
 }

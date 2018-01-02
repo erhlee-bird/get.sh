@@ -5,3 +5,7 @@ build() {
   make
   make prefix="${PREFIX}" install
 }
+
+clean() {
+  rm -f "${PREFIX}/bin/stable"
+}

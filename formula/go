@@ -7,6 +7,12 @@ build() {
   echo "export GOROOT=\"${TARGET}/go\"" >> "${HOME}/.bashrc.local"
 }
 
+clean() {
+  rm -f "${PREFIX}/bin/go"
+  rm -f "${PREFIX}/bin/gofmt"
+  rm -f "${PREFIX}/bin/godoc"
+}
+
 get() {
   wget -qO "${TMPDIR}/${FILE}" "https://storage.googleapis.com/golang/${FILE}"
 }
