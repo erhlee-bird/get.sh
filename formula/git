@@ -1,0 +1,3 @@
+SRC=https://github.com/git/git.git
+CONFIGURE_FLAGS="--without-tcltk"
+. templates/git

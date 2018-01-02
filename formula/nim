@@ -1,0 +1,23 @@
+SRC=https://github.com/nim-lang/Nim
+CSRC=https://github.com/nim-lang/csources
+. templates/git
+
+build() {
+  if [ ! -f ./koch ]; then
+    mkdir -p build
+    git clone --depth 1 "${CSRC}"
+    (cd csources; sh build.sh)
+    ./bin/nim c koch
+  fi
+  ./koch boot -d:release
+  ./koch tools
+  ln -fns "${TARGET}/bin/nim" "${PREFIX}/bin"
+  ln -fns "${TARGET}/bin/nimble" "${PREFIX}/bin"
+  ln -fns "${TARGET}/bin/nimsuggest" "${PREFIX}/bin"
+}
+
+clean() {
+  rm "${PREFIX}/bin/nim"
+  rm "${PREFIX}/bin/nimble"
+  rm "${PREFIX}/bin/nimsuggest"
+}

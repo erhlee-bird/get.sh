@@ -1,0 +1,11 @@
+build() {
+  ./scripts/install.sh -p "$PREFIX" -b "${HOME}/.bashrc.local"
+}
+
+clean() {
+  ./scripts/uninstall.sh -p "$PREFIX" -b "${HOME}/.bashrc.local"
+}
+
+get() {
+  git clone git.ebnest.pw:erhlee-bird/jmp .
+}

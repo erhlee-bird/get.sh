@@ -1,0 +1,19 @@
+MIRROR="https://releases.hashicorp.com/${PACKAGE}/${VERSION}"
+SRC="${PACKAGE}_${VERSION}_linux_amd64.zip"
+
+[ -z "$PACKAGE" ] && err "Missing Required 'PACKAGE' Variable for hashicorp"
+[ -z "$VERSION" ] && err "Missing Required 'VERSION' Variable for hashicorp"
+
+build() {
+  mkdir -p "$PREFIX/bin"
+  ln -s "$(pwd)/${PACKAGE}" "$PREFIX/bin"
+}
+
+clean() {
+  rm -f "${PREFIX}/bin/${PACKAGE}"
+}
+
+get() {
+  wget -qO "${TMPDIR}/${SRC}" "${MIRROR}/${SRC}"
+  unzip -o "${TMPDIR}/${SRC}"
+}

@@ -1,0 +1,3 @@
+PACKAGE=nomad
+VERSION=0.7.1
+. templates/hashicorp

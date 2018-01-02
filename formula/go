@@ -1,0 +1,12 @@
+VERSION=1.8
+FILE="go${VERSION}.linux-amd64.tar.gz"
+
+build() {
+  tar xzvf "${TMPDIR}/${FILE}"
+  ln -fns "${TARGET}"/go/bin/* "${PREFIX}/bin"
+  echo "export GOROOT=\"${TARGET}/go\"" >> "${HOME}/.bashrc.local"
+}
+
+get() {
+  wget -qO "${TMPDIR}/${FILE}" "https://storage.googleapis.com/golang/${FILE}"
+}

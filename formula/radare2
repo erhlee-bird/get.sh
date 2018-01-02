@@ -1,0 +1,9 @@
+SRC=https://github.com/radare/radare2
+. templates/git
+
+clean() {
+  for file in $(find binr -type f -executable | xargs -I {} basename {}); do
+    rm -f "$PREFIX/bin/$file"
+  done
+  rm -rf "$PREFIX/include/libr"
+}

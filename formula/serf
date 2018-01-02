@@ -1,0 +1,3 @@
+PACKAGE=serf
+VERSION=0.8.1
+. templates/hashicorp

@@ -1,0 +1,8 @@
+SRC=https://github.com/SWI-Prolog/swipl-devel
+. templates/git
+
+build() {
+  echo 3 | ./configure --prefix "${PREFIX}"
+  make
+  make install
+}

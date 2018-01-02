@@ -1,0 +1,3 @@
+PACKAGE=terraform
+VERSION=0.11.1
+. templates/hashicorp

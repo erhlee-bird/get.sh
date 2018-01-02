@@ -1,0 +1,16 @@
+SRC=https://github.com/Andersbakken/rtags
+. templates/git
+
+build() {
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
+        -DLIBCLANG_LIBRARIES=$(llvm-config --libdir)/libclang.so.1 \
+        -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
+  make
+  make install
+}
+
+clean() {
+  cat ./build/install_manifest.txt | xargs rm -f
+}
