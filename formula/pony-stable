@@ -1,0 +1,7 @@
+SRC=https://github.com/ponylang/pony-stable
+. templates/git
+
+build() {
+  make
+  make prefix="${PREFIX}" install
+}

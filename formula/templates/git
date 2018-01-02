@@ -2,9 +2,11 @@
 
 build() {
   autoreconf -i -v -f
-  [ -f autogen.sh ] && sh autogen.sh
+  [ -f autogen.sh ] && \
+    sh autogen.sh
   make configure
-  ./configure --prefix "${PREFIX}" "${CONFIGURE_FLAGS}"
+  [ -f ./configure ] && \
+    ./configure --prefix "${PREFIX}" "${CONFIGURE_FLAGS}"
   make
   make install
 }

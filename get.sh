@@ -54,7 +54,7 @@ abspwd() {
 }
 
 usage() {
-  echo "Usage: get.sh [OPTIONS]"
+  echo "Usage: get.sh [OPTIONS] FORMULA"
   echo
   echo "Repository of shell-based install instructions."
   echo "Build projects from source easily and repeatably."
@@ -101,8 +101,7 @@ shift $((OPTIND - 1))
 # BEGIN IMPLICIT ARGUMENT PARSING
 FORMULA="$1"
 if [ -z "$FORMULA" ]; then
-  err "Missing Formula File."
-  exit 1
+  missing_argument "FORMULA"
 elif [ -f "$(abspwd)/formula/$FORMULA" ]; then
   FORMULA="$(abspwd)/formula/$FORMULA"
 elif [ ! -f "$FORMULA" ]; then
