@@ -1,0 +1,14 @@
+SRC=https://github.com/erhlee-bird/play-docker
+COMPDIR="${PREFIX}/share/bash-completion/completions"
+. templates/git
+
+build() {
+  ln -fs "${TARGET}/play-docker" "${PREFIX}/bin"
+  mkdir -p "${COMPDIR}"
+  ln -fs "${TARGET}/play-docker_completion" "${COMPDIR}"
+}
+
+clean() {
+  rm -f "${PREFIX}/bin/play-docker"
+  rm -f "${COMPDIR}/play-docker_completion"
+}
