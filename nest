@@ -6,7 +6,8 @@ BUILDMODE=0
 CLEANMODE=0
 GETMODE=0
 
-PREFIX="$HOME/store/prefix"
+# XDG Base Directory Specification Default.
+PREFIX="$HOME/.local"
 TARGET=""
 TMPDIR="/tmp/get"
 mkdir -p "$TMPDIR"
@@ -66,14 +67,14 @@ abspwd() {
 }
 
 usage() {
-  echo "Usage: get.sh [OPTIONS] FORMULA"
+  echo "Usage: nest [OPTIONS] FORMULA"
   echo
   echo "Repository of shell-based install instructions."
   echo "Build projects from source easily and repeatably."
   if [ $# -gt 0 ]; then
     echo
     echo "E.g."
-    echo "\$ get.sh -cgb git"
+    echo "\$ nest -cgb git"
   fi
   echo
   echo "Options:"

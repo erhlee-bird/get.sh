@@ -1,4 +1,4 @@
-get
+nest
 ===
 Collection of build scripts for various projects.
 
@@ -22,11 +22,13 @@ TARGET.
 Usage
 -----
 ```
-$ git clone https://erhlee-bird/get.sh
-$ cd ./get.sh
-$ # Edit get.sh's PREFIX to point to the directory for your prefix.
-$ ./get.sh -cgb get.sh
-$ get.sh -cgb go
-$ get.sh -cgb nim
+$ git clone https://erhlee-bird/nest
+$ cd ./nest
+$ # Edit nest and change the PREFIX variable to point to the directory for your
+$ # prefix.
+$ # Bootstrap.
+$ ./nest -cgb nest
+$ nest -cgb go
+$ nest -cgb nim
 ...
 ```

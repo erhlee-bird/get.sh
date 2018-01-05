@@ -1,0 +1,10 @@
+SRC=https://github.com/erhlee-bird/nest
+. templates/git
+
+build() {
+  ln -fs "${TARGET}/nest" "${PREFIX}/bin"
+}
+
+clean() {
+  rm -f "${PREFIX}/bin/nest"
+}
