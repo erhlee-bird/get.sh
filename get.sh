@@ -102,6 +102,11 @@ shift $((OPTIND - 1))
 FORMULA="$1"
 if [ -z "$FORMULA" ]; then
   missing_argument "FORMULA"
+elif [ "$FORMULA" = "." ]; then
+  FORMULA="$(abspwd)/formula/templates/git"
+  SRC="." . "${FORMULA}"
+  build
+  exit 0
 elif [ -f "$(abspwd)/formula/$FORMULA" ]; then
   FORMULA="$(abspwd)/formula/$FORMULA"
 elif [ ! -f "$FORMULA" ]; then
