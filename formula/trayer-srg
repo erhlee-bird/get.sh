@@ -1,0 +1,12 @@
+SRC=https://github.com/sargon/trayer-srg
+. templates/git
+
+build() {
+  ./configure --prefix="${PREFIX}"
+  make
+  make install
+}
+
+clean() {
+  rm -f "${PREFIX}/bin/trayer"
+}

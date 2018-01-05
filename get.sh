@@ -13,10 +13,10 @@ mkdir -p "$TMPDIR"
 
 # Pretty Formatting Codes.
 LOGBIN=/bin/echo
-ERRORFMT="\e[1m\e[31m"
-WARNFMT="\e[1m\e[33m"
-INFOFMT="\e[1m\e[97m"
-RESETFMT="\e[0m"
+ERRORFMT="\\e[1m\\e[31m"
+WARNFMT="\\e[1m\\e[33m"
+INFOFMT="\\e[1m\\e[97m"
+RESETFMT="\\e[0m"
 # END VARIABLES
 
 err() {
@@ -50,7 +50,19 @@ missing_argument() {
 }
 
 abspwd() {
-  cd "$(dirname "$(realpath "${0}")")" && pwd -P
+  path=""
+  case "${0}" in
+    /*) path="${0}" ;;
+    *)
+      if hash realpath 2>/dev/null; then
+        path="$(realpath "${0}")"
+      else
+        path="$(pwd)/${0#./}"
+      fi
+      ;;
+  esac
+  cd "$(dirname "$(readlink "$path")")" && pwd -P
+  unset path
 }
 
 usage() {
@@ -87,6 +99,8 @@ parse_option() {
 
 while getopts ":bcghv-:" opt; do
   # Normalize the long options.
+  # shellcheck disable=SC2213 # Ignore missing cases.
+  # shellcheck disable=SC2220 # Ignore unhandled *) case.
   case "${opt}" in
     -)
       opt="${OPTARG}"
@@ -121,15 +135,20 @@ fi
 # END IMPLICIT ARGUMENT PARSING
 
 OLD_PWD="$PWD"
-cd "$(dirname "$FORMULA")"
+cd "$(dirname "$FORMULA")" || \
+  { err "Opt directory for '$FORMULA' was not found."; exit 1; }
 ret() {
-  cd "$OLD_PWD"
+  cd "$OLD_PWD" || cd || :
   unset OLD_PWD
 }
 trap ret 0 2
 
 FORMULA="$(basename "${FORMULA}")"
+# Most formulas that install to the prefix make directories themselves, but the
+# few that manually link in tend to need bin to exist.
+mkdir -p "$PREFIX/bin"
 TARGET="$PREFIX/opt/${FORMULA}"
+# shellcheck source=/dev/null
 . "./$FORMULA"
 
 [ "$CLEANMODE" -eq 1 ] && \

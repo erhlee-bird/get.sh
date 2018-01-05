@@ -1,0 +1,10 @@
+SRC=git://git.suckless.org/st
+. templates/git
+
+build() {
+  make PREFIX="${PREFIX}" clean config.h install
+}
+
+clean() {
+  make PREFIX="${PREFIX}" uninstall
+}
