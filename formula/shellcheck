@@ -1,0 +1,16 @@
+MIRROR=https://storage.googleapis.com/shellcheck
+DIR=shellcheck-latest
+ARCHIVE="${DIR}.linux.x86_64.tar.xz"
+
+build() {
+  ln -fs "$(pwd)/${DIR}/shellcheck" "${PREFIX}/bin"
+}
+
+clean() {
+  rm -f "${PREFIX}/bin/shellcheck"
+}
+
+get() {
+  wget -qO "${TMPDIR}/${ARCHIVE}" "${MIRROR}/${ARCHIVE}"
+  tar -xJf "${TMPDIR}/${ARCHIVE}"
+}
