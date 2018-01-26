@@ -8,7 +8,7 @@ build() {
   [ -f ./configure ] && \
     ./configure --prefix "${PREFIX}" "${CONFIGURE_FLAGS}"
   make
-  make install
+  PREFIX="${PREFIX}" make install
 }
 
 clean() {

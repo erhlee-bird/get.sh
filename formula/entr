@@ -1,0 +1,17 @@
+SRC=http://entrproject.org/code
+VERSION=3.9
+DIR="entr-${VERSION}"
+ARCHIVE="${DIR}.tar.gz"
+. templates/git
+
+clean() {
+  rm -f "${PREFIX}/bin/entr"
+  rm -f "${PREFIX}/share/man/man1/entr.1"
+}
+
+get() {
+  mkdir -p "${TMPDIR}/entr-${VERSION}"
+  wget -qO "${TMPDIR}/${ARCHIVE}" "${SRC}/${ARCHIVE}"
+  tar -xzf "${TMPDIR}/${ARCHIVE}" \
+    --strip-components=1 -C .
+}
