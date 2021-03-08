@@ -6,7 +6,7 @@ build() {
     sh autogen.sh
   make configure
   [ -f ./configure ] && \
-    ./configure --prefix "${PREFIX}" "${CONFIGURE_FLAGS}"
+    ./configure --prefix="${PREFIX}" "${CONFIGURE_FLAGS}"
   make
   PREFIX="${PREFIX}" make install
 }
@@ -16,5 +16,5 @@ clean() {
 }
 
 get() {
-  git clone --depth 1 --recursive -b "${BRANCH:-master}" "${SRC}" .
+  git clone --recursive -b "${BRANCH:-master}" "${SRC}" .
 }

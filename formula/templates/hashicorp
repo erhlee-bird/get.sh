@@ -5,7 +5,7 @@ SRC="${PACKAGE}_${VERSION}_linux_amd64.zip"
 [ -z "$VERSION" ] && err "Missing Required 'VERSION' Variable for hashicorp"
 
 build() {
-  ln -s "$(pwd)/${PACKAGE}" "$PREFIX/bin"
+  ln -fs "$(pwd)/${PACKAGE}" "$PREFIX/bin"
 }
 
 clean() {

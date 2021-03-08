@@ -1,0 +1,12 @@
+SRC=https://github.com/stefantalpalaru/golib
+. templates/git
+
+build() {
+  ./autogen.sh
+  ./configure
+  make PREFIX="${PREFIX}"
+}
+
+clean() {
+  make PREFIX="${PREFIX}" uninstall
+}

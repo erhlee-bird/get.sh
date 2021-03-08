@@ -1,4 +1,4 @@
-VERSION=1.8
+VERSION="${VERSION:-1.8}"
 FILE="go${VERSION}.linux-amd64.tar.gz"
 
 build() {

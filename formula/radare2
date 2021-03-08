@@ -1,5 +1,5 @@
 SRC=https://github.com/radare/radare2
-. templates/git
+. templates/git-alt-1
 
 clean() {
   for file in $(find binr -type f -executable | xargs -I {} basename {}); do

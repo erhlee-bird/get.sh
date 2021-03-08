@@ -1,0 +1,16 @@
+BRANCH="v0.8.0"
+SRC="https://github.com/asdf-vm/asdf.git"
+. templates/git
+
+build() {
+  ln -fs "${TARGET}" "${HOME}/.asdf"
+
+  echo '' >> ~/.bashrc.local
+  echo '. "${HOME}/.asdf/asdf.sh"' >> ~/.bashrc.local
+  echo '. "${HOME}/.asdf/completions/asdf.bash"' >> ~/.bashrc.local
+}
+
+clean() {
+  rm -f "${HOME}/.asdf"
+  sed -i '#${HOME}/.asdf/#d' ~/.bashrc.local
+}

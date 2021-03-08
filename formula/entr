@@ -1,5 +1,5 @@
 SRC=http://entrproject.org/code
-VERSION=3.9
+VERSION=${VERSION:-3.9}
 DIR="entr-${VERSION}"
 ARCHIVE="${DIR}.tar.gz"
 . templates/git

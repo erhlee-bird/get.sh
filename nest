@@ -8,7 +8,7 @@ GETMODE=0
 
 # XDG Base Directory Specification Default.
 PREFIX="$HOME/.local"
-TARGET=""
+TARGET="${TARGET}"
 TMPDIR="/tmp/get"
 mkdir -p "$TMPDIR"
 
@@ -148,7 +148,7 @@ FORMULA="$(basename "${FORMULA}")"
 # Most formulas that install to the prefix make directories themselves, but the
 # few that manually link in tend to need bin to exist.
 mkdir -p "$PREFIX/bin"
-TARGET="$PREFIX/opt/${FORMULA}"
+TARGET="${TARGET:-$PREFIX/opt/${FORMULA}}"
 # shellcheck source=/dev/null
 . "./$FORMULA"
 
