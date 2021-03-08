@@ -7,5 +7,5 @@ clean() {
 }
 
 get() {
-  git clone git.ebnest.pw:erhlee-bird/jmp .
+  git clone https://github.com/erhlee-bird/jmp .
 }
